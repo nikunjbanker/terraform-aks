@@ -1,0 +1,13 @@
+#az aks get-upgrades --resource-group aks-cluster-ci-rg-01 --name aksdev --output table
+# az aks upgrade `
+#     --resource-group aks-cluster-ci-rg-01 `
+#     --name aksdev `
+#     --kubernetes-version 1.19.11
+# Set max surge for a new node pool
+az account list
+az account set --subscription "Decos Cloud Platform - Development"
+az account show
+az aks get-upgrades --resource-group plt-dev-euw-rg --name plt-dev-euw-aks --output table
+az aks nodepool update -n npbalanced  -g plt-dev-euw-rg --cluster-name plt-dev-euw-aks --max-surge 33%
+az aks nodepool update -n npeck  -g plt-dev-euw-rg --cluster-name plt-dev-euw-aks --max-surge 33%
+az aks nodepool update -n npmonitoring  -g plt-dev-euw-rg --cluster-name plt-dev-euw-aks --max-surge 33%
