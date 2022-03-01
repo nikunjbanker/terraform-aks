@@ -7,7 +7,7 @@ terraform {
   backend "azurerm" {
     storage_account_name = "tfstatedci"
     container_name       = "tfstate"
-    key                  = "dev.terraform.tfstate"
+    key                  = "${var.environment}.terraform.tfstate" #"dev.terraform.tfstate"
 
     //access_key = "<COPY YOUR STORAGE ACCESS KEY HERE>"
     # rather than defining this inline, the SAS Token can also be sourced
